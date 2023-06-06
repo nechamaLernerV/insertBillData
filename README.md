@@ -14,6 +14,7 @@ services not create because it's not supported by vCita API
 2. create new business in vCita
 3. get business api key from vCita admin panel and put in createBill.js file
 4. update the business to be a spammer and not send email to clients
+5. check the business currency is like the currency of products
 5. run the script
 
 before you run the script again you need to comment the line that create clients and products
