@@ -20,8 +20,7 @@ let productsWithUid = [];
 let invoicesWithUid = [];
 let paymentsWithUid = [];
 
-const API_KEY =
-    '6a2f3a68a5cdb3a0539f698ba19bceaeb931b31b220973733e0035be7ae7e550';
+const API_KEY = '<API_KEY>';
 const API_URL = 'https://api2.meet2know.com';
 
 
@@ -161,7 +160,7 @@ async function CreateInvoices() {
       const invoice = {
         matter_uid: randomMatter.uid,
         billing_address: randomClient.address,
-        currency: 'USD',
+        currency: 'ILS',
         due_date: moment().add(1, 'M').format('YYYY-MM-DD'),
         issue_date: moment().format('YYYY-MM-DD'),
         invoice_label: `invoice for ${randomClient.first_name} - ${randomProduct.name} `,
@@ -202,7 +201,7 @@ async function CreateInvoices() {
       const payment = {
         amount: newInvoice.total,
         client_id: randomClient.id,
-        currency: 'USD',
+        currency: 'ILS',
         payment_method: randomPM,
         title: `payment for ${newInvoice.invoice_number}`,
         payment_subject_type: 'Invoice',
@@ -269,7 +268,7 @@ async function CreatePayments() {
       const payment = {
         amount: randomProduct.price,
         client_id: randomClient.id,
-        currency: 'USD',
+        currency: 'ILS',
         payment_method: randomPM,
         title: `payment for ${randomProduct.name}`,
       };
