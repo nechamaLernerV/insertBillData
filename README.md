@@ -20,5 +20,5 @@ services not create because it's not supported by vCita API
 
 
 ## Notes
-if you run the script again you need to comment the line that create clients and products\
-you can generate more clients and products data use https://www.mockaroo.com/
+- if you run the script again you need to comment the line that create clients and products\
+- you can generate more clients and products data use https://www.mockaroo.com/
