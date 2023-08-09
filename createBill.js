@@ -2,6 +2,7 @@
 const moment = require('moment');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+// const clientsData = require('./data/clients.json');
 const clientsData = require('./data/clients.json');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const productsData = require('./data/products.json');
@@ -20,11 +21,12 @@ let productsWithUid = [];
 let invoicesWithUid = [];
 let paymentsWithUid = [];
 
-const API_KEY = '<API_KEY>';
-const API_URL = 'https://api2.meet2know.com';
+const API_KEY = '8a9a40f76632d8d6c950823d83a5c78d35c1bd865f30dcaf126d3f2048fcc74b';
+const API_URL = 'https://api-int.vchost.co';
 
 
 async function CreateClients() {
+  // console.log(clientsData);
   try {
     for (const client of clientsData) {
       try {
@@ -34,12 +36,14 @@ async function CreateClients() {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${API_KEY}`,
           },
-          body: JSON.stringify(client),
+          body: client,
         });
+        console.log(response);
         const data = await response.json();
+        console.log(data);
       } catch (error) {
-        throw `Error: ${error}, client: ${client.first_name} ${client.last_name}`;
         console.error(error);
+        throw `Error: ${error}, client: ${client.first_name} ${client.last_name}`;
       }
     }
   } catch (error) {
@@ -203,7 +207,7 @@ async function CreateInvoices() {
         client_id: randomClient.id,
         currency: 'ILS',
         payment_method: randomPM,
-        title: `payment for ${newInvoice.invoice_number}`,
+        title: `${newInvoice.invoice_number}`,
         payment_subject_type: 'Invoice',
         payment_subject_id: newInvoice.uid,
       };
@@ -253,7 +257,7 @@ async function GetInvoices() {
 }
 
 async function CreatePayments() {
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 30; i++) {
     try {
       const randomClientIndex = Math.floor(
           Math.random() * clientsWithUid.length,
@@ -330,6 +334,8 @@ async function CreateBill() {
   console.log(invoicesWithUid.length);
   await CreatePayments();
   await GetPayments();
+
+
   console.log(paymentsWithUid.length);
 }
 
