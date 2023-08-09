@@ -305,10 +305,10 @@ async function CreatePayments() {
 
 async function GetPayments() {
   try {
-    const response = await fetch(`${API_URL}/platform/v1/payments`, {
+    const response = await fetch(`${API_URL}/platform//v1/payments`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application//json',
         Authorization: `Bearer ${API_KEY}`,
       },
     });
