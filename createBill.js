@@ -324,7 +324,7 @@ async function CreateBill() {
   await CreateClients();
   await CreateProducts();
   await GetClients();
-  console.log(clientsWithUid.length);
+  console.log(clientsWithUid.length + ' clients');
   await GetMatters();
   console.log(mattersWithUid.length);
   await GetProducts();
